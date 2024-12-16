@@ -28,7 +28,13 @@
 
     <div class="mb-3">
       <label for="telefono" class="form-label">Número de Telefono</label>
-      <input type="number" class="form-control" id="telefono" name="telefono" required>
+      <div class="input-group">
+        <span class="input-group-text">Cod. de Area</span>
+        <input type="number" class="form-control" id="codArea" name="codArea" required>
+      </div>
+      <div class="input-group">
+        <input type="number" class="form-control" id="telefono" name="telefono" required>
+      </div>
     </div>
 
     <div class="mb-3">
