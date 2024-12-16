@@ -11,20 +11,14 @@
 <body>
   <h1>Formulario de Registro</h1>
   <form action="procesar_formulario.php" method="post">
-
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="nombre" name="nombre" required>
-      <label for="nombre">Nombre</label>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
     </div>
 
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="floatingInput" name="nombre" required>
-      <label for="floatingInput">Email address</label>
-    </div>
-
-    <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
+    <div class="mb-3">
+      <label for="apellido" class="form-label">Apellido</label>
+      <input type="text" class="form-control" id="apellido" aria-describedby="emailHelp">
     </div>
 
     <!-- <div class="mb-3">
