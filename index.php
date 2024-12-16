@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -11,7 +11,13 @@
 <body>
   <h1>Formulario de Registro</h1>
   <form action="procesar_formulario.php" method="post">
-    <div class="mb-3">
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="nombre" name="nombre" required>
+      <label for="nombre">Nombre</label>
+    </div>
+
+    <!-- <div class="mb-3">
       <label for="nombre" class="form-label">Nombre:</label>
       <input type="text" class="form-control" id="nombre" name="nombre" required>
     </div>
@@ -34,7 +40,7 @@
     <div class="mb-3">
       <label for="fecha" class="form-label">Fecha:</label>
       <input type="date" class="form-control" id="fecha" name="fecha" required>
-    </div>
+    </div> -->
 
     <button type="submit" class="btn btn-primary">Enviar</button>
   </form>
