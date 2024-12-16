@@ -5,27 +5,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario</title>
+  <style src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"></style>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
   <h1>Formulario de Registro</h1>
   <form action="procesar_formulario.php" method="post">
-    <label for="nombre">Nombre:</label><br>
-    <input type="text" id="nombre" name="nombre" required><br><br>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre:</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" required>
+    </div>
 
-    <label for="apellido">Apellido:</label><br>
-    <input type="text" id="apellido" name="apellido" required><br><br>
+    <div class="mb-3">
+      <label for="apellido" class="form-label">Apellido:</label>
+      <input type="text" class="form-control" id="apellido" name="apellido" required>
+    </div>
 
-    <label for="dni">DNI:</label><br>
-    <input type="number" id="dni" name="dni" required><br><br>
+    <div class="mb-3">
+      <label for="dni" class="form-label">DNI:</label>
+      <input type="number" class="form-control" id="dni" name="dni" required>
+    </div>
 
-    <label for="cantidad_personas">Cantidad de Personas:</label><br>
-    <input type="number" id="cantidad_personas" name="cantidad_personas" min="1" required><br><br>
+    <div class="mb-3">
+      <label for="cantidad_personas" class="form-label">Cantidad de Personas:</label>
+      <input type="number" class="form-control" id="cantidad_personas" name="cantidad_personas" min="1" required>
+    </div>
 
-    <label for="fecha">Fecha:</label><br>
-    <input type="date" id="fecha" name="fecha" required><br><br>
+    <div class="mb-3">
+      <label for="fecha" class="form-label">Fecha:</label>
+      <input type="date" class="form-control" id="fecha" name="fecha" required>
+    </div>
 
-    <button type="submit">Enviar</button>
+    <button type="submit" class="btn btn-primary">Enviar</button>
   </form>
 </body>
 
