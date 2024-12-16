@@ -22,6 +22,16 @@
     </div>
 
     <div class="mb-3">
+      <label for="mail" class="form-label">Mail</label>
+      <input type="text" class="form-control" id="mail" name="mail" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="telefono" class="form-label">Número de Telefono</label>
+      <input type="number" class="form-control" id="telefono" name="telefono" required>
+    </div>
+
+    <div class="mb-3">
       <label for="provincia" class="form-label">Provincia</label>
       <input type="text" class="form-control" id="provincia" name="provincia" required>
     </div>
@@ -39,16 +49,6 @@
     <div class="mb-3">
       <label for="fecha" class="form-label">¿Que dia vas a asistir?</label>
       <input type="date" class="form-control" id="fecha" name="fecha" max="2025-03-31" required>
-    </div>
-
-    <div class="mb-3">
-      <label for="mail" class="form-label">Mail</label>
-      <input type="text" class="form-control" id="mail" name="mail" required>
-    </div>
-
-    <div class="mb-3">
-      <label for="telefono" class="form-label">Número de Telefono</label>
-      <input type="number" class="form-control" id="telefono" name="telefono" required>
     </div>
 
     <button type="submit" class="btn btn-primary">Enviar</button>
