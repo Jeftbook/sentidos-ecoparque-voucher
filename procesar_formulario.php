@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo "Nombre: $nombre<br>";
   echo "Apellido: $apellido<br>";
   echo "Mail: $mail<br>";
-  echo "Telefono: $codArea + $telefono<br>";
+  echo "Telefono: $codArea - $telefono<br>";
   echo "Provincia: $provincia<br>";
   echo "Localidad: $localidad<br>";
   echo "Cuantos van: $cuantos_van<br>";
