@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $fecha_envio = date('Y-m-d H:i:s'); // Fecha de envío actual
 
   // Guardar los datos en la base de datos
-  $sql = "INSERT INTO registros (nombre, apellido, mail, cod_area, telefono, provincia, localidad, cuantos_van, fecha_asistencia, fecha_envio)
-          VALUES (:nombre, :apellido, :mail, :cod_area, :telefono, :provincia, :localidad, :cuantos_van, :fecha_asistencia, :fecha_envio)";
+  $sql = "INSERT INTO registros (nombre, apellido, mail, telefono, provincia, localidad, cuantos_van, que_dia_van, fecha_de_creacion)
+          VALUES (:nombre, :apellido, :mail, :telefono, :provincia, :localidad, :cuantos_van, :que_dia_van, :fecha_de_creacion)";
   $stmt = $pdo->prepare($sql);
   $stmt->execute([
     ':nombre' => $nombre,
