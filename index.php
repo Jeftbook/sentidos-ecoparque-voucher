@@ -25,7 +25,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="mail" class="form-label">Mail</label>
+          <label for="mail" class="form-label">Correo electronico</label>
           <input type="text" class="form-control" id="mail" name="mail" required>
         </div>
 
@@ -34,6 +34,7 @@
           <div class="input-group">
             <span class="input-group-text">Cod. de Area</span>
             <input type="number" class="form-control" id="codArea" name="codArea" required>
+            <span class="input-group-text">Tel</span>
             <input type="number" class="form-control" id="telefono" name="telefono" required>
           </div>
         </div>
