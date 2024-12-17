@@ -34,8 +34,6 @@
           <div class="input-group">
             <span class="input-group-text">Cod. de Area</span>
             <input type="number" class="form-control" id="codArea" name="codArea" required>
-          </div>
-          <div class="input-group">
             <input type="number" class="form-control" id="telefono" name="telefono" required>
           </div>
         </div>
