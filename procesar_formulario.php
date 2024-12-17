@@ -5,6 +5,12 @@ $dbname = 'c1312181_voucher';
 $user = 'c1312181_voucher';
 $password = '55riDEzamo';
 
+$mysqli = new mysqli($host, $user, $password, $dbname);
+if ($mysqli->connect_errno) {
+    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
+echo $mysqli->host_info . "\n";
+
 try {
   $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
