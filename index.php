@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     function Header()
     {
       // Inserta una imagen en la cabecera
-      $ancho_imagen = $this->GetPageWidth() * 0.8; // Ajusta el ancho de la imagen al 80% del ancho de la página
+      $ancho_imagen = $this->GetPageWidth() * 1; // Ajusta el ancho de la imagen al 80% del ancho de la página
       $x = ($this->GetPageWidth() - $ancho_imagen) / 2; // Calcula la posición centrada
       $this->Image('sentidos_header.jpg', $x, 5, $ancho_imagen); // x=$x, y=5, ancho=$ancho_imagen
     }
@@ -95,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $pdf = new PDF();
   $pdf->AddPage();
   $pdf->SetFont('Arial', 'B', 16);
+  $pdf->Ln(15);
   $pdf->Cell(0, 10, 'Sentidos', 0, 1, 'C');
   $pdf->Ln(10);
   $pdf->SetFont('Arial', '', 12);
