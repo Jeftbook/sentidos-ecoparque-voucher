@@ -13,7 +13,7 @@
     <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
 
       <h1>Formulario de Registro</h1>
-      <form action="procesar_formulario.php" method="post">
+      <form method="post">
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="nombre" name="nombre" required>
