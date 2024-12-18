@@ -170,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Tu registro ha sido procesado correctamente.
           </div>
           <div class="modal-footer">
-            <a href="voucher.pdf" class="btn btn-success" download>Descargar Voucher</a>
+            <a href="#" class="btn btn-success" download>Descargar Voucher</a>
           </div>
         </div>
       </div>
@@ -179,25 +179,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      $('#registrationForm').on('submit', function(e) {
-        e.preventDefault();
+      $(document).ready(function() {
+        // Manejar el envío del formulario
+        $('form').on('submit', function(e) {
+          e.preventDefault(); // Evita la recarga de la página
 
-        $.ajax({
-          url: '',
-          method: 'POST',
-          data: $(this).serialize(),
-          dataType: 'json',
-          success: function(response) {
-            if (response.status === 'success') {
-              $('#downloadLink').attr('href', response.pdf);
-              $('#exampleModal').modal('show');
-            } else {
-              alert('Error: ' + response.message);
-            }
-          },
-          error: function() {
-            alert('Error en la solicitud. Intenta nuevamente.');
-          }
+          $.ajax({
+            url: '', // Se enviará al mismo script PHP
+            type: 'POST',
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function(response) {
+              if (response.status === 'success') {
+                // Configura el enlace para descargar el PDF
+                const downloadLink = document.querySelector('#exampleModal a');
+                downloadLink.href = response.pdf;
+                downloadLink.download = 'voucher.pdf';
+
+                // Muestra el modal
+                const modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                modal.show();
+              } else {
+                alert('Error: Ocurrió un problema al procesar tu solicitud.');
+              }
+            },
+            error: function() {
+              alert('Error: No se pudo conectar con el servidor.');
+            },
+          });
         });
       });
     </script>
