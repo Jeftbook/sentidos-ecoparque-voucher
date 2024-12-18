@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   // Generar PDF
-  $pdf = new PDFWithImages();
+  $pdf = new FPDF();
   $pdf->AddPage();
   $pdf->SetFont('Arial', 'B', 16);
   $pdf->Cell(0, 10, 'Sentidos', 0, 1, 'C');
