@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // Inserta una imagen en la cabecera
       $ancho_imagen = $this->GetPageWidth() * 1; // Ajusta el ancho de la imagen al 80% del ancho de la página
       $x = ($this->GetPageWidth() - $ancho_imagen) / 2; // Calcula la posición centrada
-      $this->Image('sentidos_header.jpg', $x, 5, $ancho_imagen); // x=$x, y=5, ancho=$ancho_imagen
+      $this->Image('sentidos_header.jpg', $x, 3, $ancho_imagen); // x=$x, y=5, ancho=$ancho_imagen
     }
 
     // Sobrescribe el método Footer
