@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     function Header()
     {
       // Inserta una imagen en la cabecera
-      $this->Image('sentidos_header.jpg', 10, 6, 0); // (ruta, x, y, ancho)
+      $this->Image('sentidos_header.jpg', 10, 6, 768); // (ruta, x, y, ancho)
     }
 
     // Sobrescribe el método Footer
