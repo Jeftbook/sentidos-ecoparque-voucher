@@ -72,8 +72,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ':convenio' => $convenio
   ]);
 
+  class PDFWithImages extends FPDF
+  {
+    // Sobrescribe el método Header
+    function Header()
+    {
+      // Inserta una imagen en la cabecera
+      $this->Image('sentidos_header.jpg', 10, 6, 30); // (ruta, x, y, ancho)
+    }
+
+    // Sobrescribe el método Footer
+    function Footer()
+    {
+      // Inserta una imagen en el pie de página
+      $this->Image('sentidos_header.jpg', 10, -20, 30); // (ruta, x, y, ancho)
+    }
+  }
+
   // Generar PDF
-  $pdf = new FPDF();
+  $pdf = new PDFWithImages();
   $pdf->AddPage();
   $pdf->SetFont('Arial', 'B', 16);
   $pdf->Cell(0, 10, 'Sentidos', 0, 1, 'C');
