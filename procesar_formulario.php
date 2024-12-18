@@ -20,35 +20,36 @@ try {
 }
 
 // Verificar si el parámetro "convenio" existe en la URL
-$convenio_param = '';
-if (isset($_GET['convenio'])) {
-  $convenio_param = $_GET['convenio'];
+// $convenio_param = '';
+// if (isset($_GET['convenio'])) {
+//   $convenio_param = $_GET['convenio'];
 
-  switch ($convenio_param) {
-    case 'cos':
-      $convenio_param = 'Cosquin';
-      break;
+//   switch ($convenio_param) {
+//     case 'cos':
+//       $convenio_param = 'Cosquin';
+//       break;
 
-    case 'sta':
-      $convenio_param = 'Santa Maria';
-      break;
+//     case 'sta':
+//       $convenio_param = 'Santa Maria';
+//       break;
 
-    case 'bms':
-      $convenio_param = 'Bialet Masse';
-      break;
+//     case 'bms':
+//       $convenio_param = 'Bialet Masse';
+//       break;
 
-    case 'lfd':
-      $convenio_param = 'La Falda';
-      break;
+//     case 'lfd':
+//       $convenio_param = 'La Falda';
+//       break;
 
-    default:
-      $convenio_param;
-      break;
-  }
-}
+//     default:
+//       $convenio_param;
+//       break;
+//   }
+// }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Capturar los datos del formulario
+  $convenio = $_POST['convenio'];
   $nombre = $_POST['nombre'];
   $apellido = $_POST['apellido'];
   $mail = $_POST['mail'];
@@ -59,6 +60,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $cuantos_van = $_POST['cuantos_van'];
   $fecha_asistencia = $_POST['fecha'];
   $fecha_envio = date('Y-m-d H:i:s'); // Fecha de envío actual
+
+  switch ($convenio) {
+    case 'cos':
+      $convenio = 'Cosquin';
+      break;
+
+    case 'sta':
+      $convenio = 'Santa Maria';
+      break;
+
+    case 'bms':
+      $convenio = 'Bialet Masse';
+      break;
+
+    case 'lfd':
+      $convenio = 'La Falda';
+      break;
+
+    default:
+      $convenio;
+      break;
+  }
 
   // Guardar los datos en la base de datos
   $sql = "INSERT INTO voucher (nombre, apellido, mail, telefono, provincia, localidad, cuantos_van, que_dia_van, fecha_de_creacion, convenio)
@@ -74,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ':cuantos_van' => $cuantos_van,
     ':que_dia_van' => $fecha_asistencia,
     ':fecha_de_creacion' => $fecha_envio,
-    ':convenio' => $convenio_param
+    ':convenio' => $convenio
   ]);
 
   echo "Datos guardados correctamente.";

@@ -13,7 +13,14 @@
     <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
 
       <h1>Formulario de Registro</h1>
+      <?php
+      // Capturar el parámetro convenio desde la URL
+      $convenio = isset($_GET['convenio']) ? htmlspecialchars($_GET['convenio']) : '';
+      ?>
       <form action="procesar_formulario.php" method="post">
+
+        <input type="hidden" name="convenio" value="<?php echo $convenio; ?>">
+
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="nombre" name="nombre" required>
