@@ -170,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Tu registro ha sido procesado correctamente.
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-success" download>Descargar Voucher</a>
+            <a href="voucher.pdf" class="btn btn-success" download>Descargar Voucher</a>
           </div>
         </div>
       </div>
