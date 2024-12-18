@@ -88,8 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     {
       // Inserta una imagen en el pie de página
       $y = $this->GetPageHeight() - 25; // Ajusta el margen inferior
-      $ancho_imagen = $this->GetPageWidth() * 0.8; // 80% del ancho de la página
-      $this->Image('sentidos_header.jpg', 10, $y, $ancho_imagen); // (ruta, x, y, ancho)
+      $ancho_imagen = $this->GetPageWidth() * 1; // 80% del ancho de la página
+      $x = ($this->GetPageWidth() - $ancho_imagen) / 2; // Calcula la posición centrada
+      $this->Image('sentidos_header.jpg', $x, $y, $ancho_imagen); // (ruta, x, y, ancho)
     }
   }
 
