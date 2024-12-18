@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     function Footer()
     {
       // Inserta una imagen en el pie de página
-      $y = $this->GetPageHeight() - 15; // Ajusta el margen inferior
+      $y = $this->GetPageHeight() - 20; // Ajusta el margen inferior
       $ancho_imagen = $this->GetPageWidth() * 1; // 80% del ancho de la página
       $x = ($this->GetPageWidth() - $ancho_imagen) / 2; // Calcula la posición centrada
       $this->Image('sentidos_header.jpg', $x, $y, $ancho_imagen); // (ruta, x, y, ancho)
