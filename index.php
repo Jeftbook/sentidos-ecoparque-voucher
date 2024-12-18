@@ -72,13 +72,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ':convenio' => $convenio
   ]);
 
-  class PDFWithImages extends FPDF
+  class PDF extends FPDF
   {
     // Sobrescribe el método Header
     function Header()
     {
       // Inserta una imagen en la cabecera
-      $this->Image('sentidos_header.jpg', 10, 6, 768); // (ruta, x, y, ancho)
+      $ancho_imagen = $this->GetPageWidth() * 0.8; // Ajusta el ancho de la imagen al 80% del ancho de la página
+      $x = ($this->GetPageWidth() - $ancho_imagen) / 2; // Calcula la posición centrada
+      $this->Image('sentidos_header.jpg', $x, 5, $ancho_imagen); // x=$x, y=5, ancho=$ancho_imagen
     }
 
     // Sobrescribe el método Footer
@@ -90,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   // Generar PDF
-  $pdf = new FPDF();
+  $pdf = new PDF();
   $pdf->AddPage();
   $pdf->SetFont('Arial', 'B', 16);
   $pdf->Cell(0, 10, 'Sentidos', 0, 1, 'C');
