@@ -20,11 +20,9 @@ try {
 }
 
 // Verificar si el parámetro "convenio" existe en la URL
+$convenio_param = '';
 if (isset($_GET['convenio'])) {
   $convenio_param = $_GET['convenio'];
-
-  // Definir el valor que quieres comparar
-  $valor_permitido = 'especial123';
 
   switch ($convenio_param) {
     case 'cos':
