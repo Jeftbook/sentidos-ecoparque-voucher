@@ -87,7 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     function Footer()
     {
       // Inserta una imagen en el pie de página
-      $this->Image('sentidos_header.jpg', 10, -20, 30); // (ruta, x, y, ancho)
+      $y = $this->GetPageHeight() - 25; // Ajusta el margen inferior
+      $ancho_imagen = $this->GetPageWidth() * 0.8; // 80% del ancho de la página
+      $this->Image('sentidos_header.jpg', 10, $y, $ancho_imagen); // (ruta, x, y, ancho)
     }
   }
 
@@ -95,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $pdf = new PDF();
   $pdf->AddPage();
   $pdf->SetFont('Arial', 'B', 16);
-  $pdf->Ln(15);
+  $pdf->Ln(30);
   $pdf->Cell(0, 10, 'Sentidos', 0, 1, 'C');
   $pdf->Ln(10);
   $pdf->SetFont('Arial', '', 12);
