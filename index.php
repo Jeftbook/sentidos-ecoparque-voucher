@@ -77,16 +77,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sobrescribe el método Header
     function Header()
     {
-      // Inserta una imagen que cubra el ancho completo de la hoja
-      $this->Image('ruta_de_tu_logo.png', 0, 0, $this->GetPageWidth()); // x=0, y=0, ancho igual al ancho de la página
+      // Inserta una imagen en la cabecera
+      $this->Image('sentidos_header.jpg', 10, 6, 768); // (ruta, x, y, ancho)
     }
 
     // Sobrescribe el método Footer
     function Footer()
     {
-      // Inserta una imagen que cubra el ancho completo del pie de página
-      $this->Image('ruta_de_tu_imagen_footer.png', 0, $this->GetPageHeight() - 20, $this->GetPageWidth());
-      // x=0, y=(altura de la página - 20), ancho igual al ancho de la página
+      // Inserta una imagen en el pie de página
+      $this->Image('sentidos_header.jpg', 10, -20, 30); // (ruta, x, y, ancho)
     }
   }
 
