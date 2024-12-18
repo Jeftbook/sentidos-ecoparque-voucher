@@ -203,9 +203,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 alert('Error: Ocurrió un problema al procesar tu solicitud.');
               }
             },
-            error: function() {
-              alert('Error: No se pudo conectar con el servidor.');
-            },
+            // error: function() {
+            //   alert('Error: No se pudo conectar con el servidor.');
+            // },
           });
         });
       });
