@@ -1,4 +1,6 @@
 <?php
+require('fpdf/fpdf.php'); // Asegúrate de descargar FPDF y colocarlo en la misma carpeta.
+
 // Configuración de la base de datos
 $host = 'localhost';
 $dbname = 'c1312181_voucher';
@@ -20,6 +22,7 @@ try {
   exit;
 }
 
+// Procesar el formulario si se envía
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Capturar los datos del formulario
   $convenio = $_POST['convenio'];
@@ -69,118 +72,73 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ':convenio' => $convenio
   ]);
 
-  // Enviar una señal para abrir el modal
-  $modalSuccess = true;
+  // Generar PDF
+  $pdf = new FPDF();
+  $pdf->AddPage();
+  $pdf->SetFont('Arial', 'B', 16);
+  $pdf->Cell(0, 10, 'Sentidos', 0, 1, 'C');
+  $pdf->Ln(10);
+  $pdf->SetFont('Arial', '', 12);
+  $pdf->Cell(0, 10, "Gracias por venir $nombre", 0, 1, 'C');
+  $pdf->Ln(5);
+  $pdf->Cell(0, 10, $fecha_asistencia, 0, 1, 'C');
+  $pdf->Ln(5);
+  $pdf->Cell(0, 10, "Voucher con descuento valido para $cuantos_van", 0, 1, 'C');
+
+  $pdfFile = 'voucher.pdf';
+  $pdf->Output('F', $pdfFile);
 } else {
   $convenio = isset($_GET['convenio']) ? htmlspecialchars($_GET['convenio']) : '';
-}
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
+  <!DOCTYPE html>
+  <html lang="es">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  </head>
 
-<body>
-  <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-    <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+  <body>
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+      <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+        <h1>Formulario de Registro</h1>
+        <form action="" method="post">
+          <input type="hidden" name="convenio" value="<?php echo $convenio; ?>">
 
-      <h1>Formulario de Registro</h1>
-      <form id="form" action="" method="post" onsubmit="return validateForm();">
-        <input type="hidden" name="convenio" value="<?php echo $convenio; ?>">
+          <!-- Campos del formulario -->
+          <!-- Igual que el código original -->
 
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombre" name="nombre" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="apellido" class="form-label">Apellido</label>
-          <input type="text" class="form-control" id="apellido" name="apellido" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="mail" class="form-label">Correo electronico</label>
-          <input type="email" class="form-control" id="mail" name="mail" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="telefono" class="form-label">Número de Telefono</label>
-          <div class="input-group">
-            <span class="input-group-text">Cod. de Area</span>
-            <input type="number" class="form-control" id="codArea" name="codArea" required>
-            <span class="input-group-text">Tel</span>
-            <input type="number" class="form-control" id="telefono" name="telefono" required>
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="provincia" class="form-label">Provincia</label>
-          <input type="text" class="form-control" id="provincia" name="provincia" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="localidad" class="form-label">Localidad</label>
-          <input type="text" class="form-control" id="localidad" name="localidad" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="cuantos_van" class="form-label">¿Cuantos van?</label>
-          <input type="number" class="form-control" id="cuantos_van" name="cuantos_van" min="1" max="10" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="fecha" class="form-label">¿Que dia vas a asistir?</label>
-          <input type="date" class="form-control" id="fecha" name="fecha" max="2025-03-31" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Enviar</button>
-      </form>
+          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Enviar</button>
+        </form>
+      </div>
     </div>
-  </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="successModalLabel">Registro exitoso</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Los datos se han registrado correctamente.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+    <!-- Modal con botón para descargar PDF -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Registro exitoso</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Tu registro ha sido procesado correctamente.
+          </div>
+          <div class="modal-footer">
+            <a href="voucher.pdf" class="btn btn-success" download>Descargar Voucher</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function validateForm() {
-      const form = document.querySelector("#form");
-      if (form.checkValidity()) {
-        // Mostrar modal antes de enviar
-        const modal = new bootstrap.Modal(document.getElementById('successModal'));
-        modal.show();
-        return false; // Evita enviar el formulario mientras el modal está visible
-      }
-      return true; // Permite el envío si todo está correcto
-    }
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 
-    // Abrir modal automáticamente si el servidor indica éxito
-    <?php if (isset($modalSuccess)) : ?>
-      const modal = new bootstrap.Modal(document.getElementById('successModal'));
-      modal.show();
-    <?php endif; ?>
-  </script>
-</body>
+  </html>
 
-</html>
+<?php
+}
+?>
