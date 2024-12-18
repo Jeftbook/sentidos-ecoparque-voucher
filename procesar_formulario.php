@@ -44,43 +44,40 @@ if (isset($_GET['convenio'])) {
       break;
 
     default:
-      $convenio_param = '';
+      $convenio_param;
       break;
   }
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Capturar los datos del formulario
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $mail = $_POST['mail'];
-    $codArea = $_POST['codArea'];
-    $telefono = $_POST['telefono'];
-    $provincia = $_POST['provincia'];
-    $localidad = $_POST['localidad'];
-    $cuantos_van = $_POST['cuantos_van'];
-    $fecha_asistencia = $_POST['fecha'];
-    $fecha_envio = date('Y-m-d H:i:s'); // Fecha de envío actual
+}
 
-    // Guardar los datos en la base de datos
-    $sql = "INSERT INTO voucher (nombre, apellido, mail, telefono, provincia, localidad, cuantos_van, que_dia_van, fecha_de_creacion, convenio)
-                  VALUES (:nombre, :apellido, :mail, :telefono, :provincia, :localidad, :cuantos_van, :que_dia_van, :fecha_de_creacion, :convenio)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-      ':nombre' => $nombre,
-      ':apellido' => $apellido,
-      ':mail' => $mail,
-      ':telefono' => ($codArea + $telefono),
-      ':provincia' => $provincia,
-      ':localidad' => $localidad,
-      ':cuantos_van' => $cuantos_van,
-      ':que_dia_van' => $fecha_asistencia,
-      ':fecha_de_creacion' => $fecha_envio,
-      ':convenio' => $convenio_param
-    ]);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Capturar los datos del formulario
+  $nombre = $_POST['nombre'];
+  $apellido = $_POST['apellido'];
+  $mail = $_POST['mail'];
+  $codArea = $_POST['codArea'];
+  $telefono = $_POST['telefono'];
+  $provincia = $_POST['provincia'];
+  $localidad = $_POST['localidad'];
+  $cuantos_van = $_POST['cuantos_van'];
+  $fecha_asistencia = $_POST['fecha'];
+  $fecha_envio = date('Y-m-d H:i:s'); // Fecha de envío actual
 
-    echo "Datos guardados correctamente.";
-  }
-} else {
-  // Si el parámetro "convenio" no está presente en la URL
-  echo "Error: Falta el parámetro 'convenio' en la URL.";
-  exit;
+  // Guardar los datos en la base de datos
+  $sql = "INSERT INTO voucher (nombre, apellido, mail, telefono, provincia, localidad, cuantos_van, que_dia_van, fecha_de_creacion, convenio)
+                VALUES (:nombre, :apellido, :mail, :telefono, :provincia, :localidad, :cuantos_van, :que_dia_van, :fecha_de_creacion, :convenio)";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute([
+    ':nombre' => $nombre,
+    ':apellido' => $apellido,
+    ':mail' => $mail,
+    ':telefono' => ($codArea + $telefono),
+    ':provincia' => $provincia,
+    ':localidad' => $localidad,
+    ':cuantos_van' => $cuantos_van,
+    ':que_dia_van' => $fecha_asistencia,
+    ':fecha_de_creacion' => $fecha_envio,
+    ':convenio' => $convenio_param
+  ]);
+
+  echo "Datos guardados correctamente.";
 }
