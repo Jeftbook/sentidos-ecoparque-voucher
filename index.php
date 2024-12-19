@@ -122,62 +122,95 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+      /* Imagen de fondo */
+      body {
+        background-image: url('follaje_infinito_01_lr.jpg');
+        /* Cambia esto por la ruta de tu imagen */
+        background-size: cover;
+        /* Hace que la imagen cubra todo el fondo */
+        background-position: center;
+        /* Centra la imagen */
+        background-repeat: no-repeat;
+        /* Evita que la imagen se repita */
+        height: 100vh;
+        /* Asegura que cubra toda la pantalla */
+      }
+
+      /* Estilo para el formulario */
+      .card {
+        background-color: rgba(255, 255, 255, 0.8);
+        /* Blanco con opacidad del 80% */
+        border-radius: 15px;
+        /* Bordes redondeados */
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        /* Sombra suave */
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        /* Color del texto del título */
+      }
+    </style>
   </head>
 
   <body>
-    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-      <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
-        <h1>Formulario de Registro</h1>
-        <form action="" method="post">
-          <input type="hidden" name="convenio" value="<?php echo $convenio; ?>">
+    <div>
+      <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+        <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+          <h1>Formulario de Registro</h1>
+          <form action="" method="post">
+            <input type="hidden" name="convenio" value="<?php echo $convenio; ?>">
 
-          <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" required>
-          </div>
-
-          <div class="mb-3">
-            <label for="apellido" class="form-label">Apellido</label>
-            <input type="text" class="form-control" id="apellido" name="apellido" required>
-          </div>
-
-          <div class="mb-3">
-            <label for="mail" class="form-label">Correo electronico</label>
-            <input type="email" class="form-control" id="mail" name="mail" required>
-          </div>
-
-          <div class="mb-3">
-            <label for="telefono" class="form-label">Número de Telefono</label>
-            <div class="input-group">
-              <span class="input-group-text">Cod. de Area</span>
-              <input type="number" class="form-control" id="codArea" name="codArea" required>
-              <span class="input-group-text">Tel</span>
-              <input type="number" class="form-control" id="telefono" name="telefono" required>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" required>
             </div>
-          </div>
 
-          <div class="mb-3">
-            <label for="provincia" class="form-label">Provincia</label>
-            <input type="text" class="form-control" id="provincia" name="provincia" required>
-          </div>
+            <div class="mb-3">
+              <label for="apellido" class="form-label">Apellido</label>
+              <input type="text" class="form-control" id="apellido" name="apellido" required>
+            </div>
 
-          <div class="mb-3">
-            <label for="localidad" class="form-label">Localidad</label>
-            <input type="text" class="form-control" id="localidad" name="localidad" required>
-          </div>
+            <div class="mb-3">
+              <label for="mail" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="mail" name="mail" required>
+            </div>
 
-          <div class="mb-3">
-            <label for="cuantos_van" class="form-label">¿Cuantos van?</label>
-            <input type="number" class="form-control" id="cuantos_van" name="cuantos_van" min="1" max="10" required>
-          </div>
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Número de Teléfono</label>
+              <div class="input-group">
+                <span class="input-group-text">Cod. de Área</span>
+                <input type="number" class="form-control" id="codArea" name="codArea" required>
+                <span class="input-group-text">Tel</span>
+                <input type="number" class="form-control" id="telefono" name="telefono" required>
+              </div>
+            </div>
 
-          <div class="mb-3">
-            <label for="fecha" class="form-label">¿Que dia vas a asistir?</label>
-            <input type="date" class="form-control" id="fecha" name="fecha" max="2025-03-31" required>
-          </div>
+            <div class="mb-3">
+              <label for="provincia" class="form-label">Provincia</label>
+              <input type="text" class="form-control" id="provincia" name="provincia" required>
+            </div>
 
-          <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Enviar</button>
-        </form>
+            <div class="mb-3">
+              <label for="localidad" class="form-label">Localidad</label>
+              <input type="text" class="form-control" id="localidad" name="localidad" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="cuantos_van" class="form-label">¿Cuántos van?</label>
+              <input type="number" class="form-control" id="cuantos_van" name="cuantos_van" min="1" max="10" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="fecha" class="form-label">¿Qué día vas a asistir?</label>
+              <input type="date" class="form-control" id="fecha" name="fecha" max="2025-03-31" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </form>
+        </div>
       </div>
     </div>
 
