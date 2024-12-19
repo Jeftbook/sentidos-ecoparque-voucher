@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
       /* Imagen de fondo */
       body {
-        background-image: url('fondo.jpg');
+        background-image: url('follaje_infinito_01_lr.jpg');
         /* Ruta de tu imagen de fondo */
         background-repeat: repeat;
         /* La imagen se repite */
