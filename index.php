@@ -123,12 +123,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Formulario</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
-      /* Imagen de fondo */
       body {
-        background-image: url('follaje_infinito_01_lr.jpg');
-        /* Ruta de tu imagen de fondo */
+        background-image: url('fondo.jpg');
         background-repeat: repeat;
-        /* La imagen se repite */
+        background-size: auto;
+        background-position: top left;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
       }
 
       .card {
