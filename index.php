@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
       body {
-        background-image: url('fondo.jpg');
+        background-image: url('follaje_infinito_01_lr.jpg');
         background-repeat: repeat;
         background-size: auto;
         background-position: top left;
