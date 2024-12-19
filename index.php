@@ -125,26 +125,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
       /* Imagen de fondo */
       body {
-        background-image: url('follaje_infinito_01_lr.jpg');
-        /* Cambia esto por la ruta de tu imagen */
-        background-size: cover;
-        /* Hace que la imagen cubra todo el fondo */
+        background-image: url('fondo.jpg');
+        /* Ruta de tu imagen de fondo */
+        background-repeat: repeat;
+        /* La imagen se repite */
+        background-size: auto;
+        /* Ajusta el tamaño de la imagen */
         background-position: center;
-        /* Centra la imagen */
-        background-repeat: no-repeat;
-        /* Evita que la imagen se repita */
-        height: 100vh;
-        /* Asegura que cubra toda la pantalla */
+        /* Centra el fondo */
       }
 
-      /* Estilo para el formulario */
       .card {
         background-color: rgba(255, 255, 255, 0.8);
-        /* Blanco con opacidad del 80% */
-        border-radius: 15px;
-        /* Bordes redondeados */
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-        /* Sombra suave */
+        /* Blanco con 80% de transparencia */
+        border-radius: 10px;
+      }
+
+      input.form-control {
+        background-color: rgba(255, 255, 255, 0.8);
+        /* Blanco con 80% de transparencia */
+        border: 1px solid #ccc;
+      }
+
+      .input-group-text {
+        background-color: rgba(255, 255, 255, 0.8);
+        /* Blanco con 80% de transparencia */
+      }
+
+      button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
       }
 
       h1 {
@@ -208,7 +225,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <input type="date" class="form-control" id="fecha" name="fecha" max="2025-03-31" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Enviar</button>
           </form>
         </div>
       </div>
