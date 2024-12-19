@@ -129,27 +129,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         /* Ruta de tu imagen de fondo */
         background-repeat: repeat;
         /* La imagen se repite */
-        background-size: auto;
-        /* Ajusta el tamaño de la imagen */
-        background-position: center;
-        /* Centra el fondo */
       }
 
       .card {
         background-color: rgba(255, 255, 255, 0.8);
-        /* Blanco con 80% de transparencia */
         border-radius: 10px;
       }
 
       input.form-control {
         background-color: rgba(255, 255, 255, 0.8);
-        /* Blanco con 80% de transparencia */
         border: 1px solid #ccc;
       }
 
       .input-group-text {
         background-color: rgba(255, 255, 255, 0.8);
-        /* Blanco con 80% de transparencia */
       }
 
       button[type="submit"] {
