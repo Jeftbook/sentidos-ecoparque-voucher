@@ -126,11 +126,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       body {
         background-image: url('follaje_infinito_01_lr.jpg');
         background-repeat: repeat;
-        background-size: auto;
-        background-position: top left;
-        min-height: 100vh;
-        margin: 0;
-        padding: 0;
       }
 
       .card {
