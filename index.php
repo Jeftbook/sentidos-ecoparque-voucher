@@ -125,7 +125,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
       body {
         background-image: url('follaje_infinito_01_lr.jpg');
+        background-size: 512px 512px;
         background-repeat: repeat;
+        background-color: rgba(255, 255, 255, 0);
+        background-blend-mode: overlay;
       }
 
       .card {
