@@ -235,7 +235,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
+    <title>Sentidos Ecoparque - Voucher</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
       body {
@@ -285,7 +285,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div>
       <div class="container min-vh-100 d-flex justify-content-center align-items-center">
         <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
-          <h1>Formulario de Registro</h1>
+          <h1>Obtene tu descuento</h1>
           <form action="" method="post">
             <input type="hidden" name="convenio" value="<?php echo $convenio; ?>">
 
