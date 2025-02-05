@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $convenio = 'La Calera';
       break;
     case 'vscl':
-      $convenio = 'Villa Santa Cruz del Lago';
+      $convenio = 'Villa Sta. Cruz del Lago';
       break;
     case 'srq':
       $convenio = 'San Roque';
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $convenio = 'Valle Hermoso';
       break;
     case 'sqi':
-      $convenio = 'Siquiman';
+      $convenio = 'Villa P. Siquiman';
       break;
     case 'cbg':
       $convenio = 'Cabalango';
@@ -88,6 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       break;
     case 'fmc':
       $convenio = 'FARMACIA';
+      break;
+    case 'spt':
+      $convenio = 'SuperTourUPD';
       break;
     default:
       $convenio = '';
@@ -123,31 +126,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
   }
 
-  // Generar PDF
-  $pdf = new PDF();
-  $pdf->AddPage();
-  $pdf->SetFont('Arial', 'B', 30);
-  $pdf->Ln(60);
-  $pdf->Cell(0, 10, 'Gracias por venir', 0, 1, 'C');
-  $pdf->Cell(0, 10, $nombre, 0, 1, 'C');
-  $pdf->Ln(10);
-  $pdf->SetFont('Arial', '', 20);
-  $pdf->Cell(0, 10, "Te otorgamos un", 0, 1, 'C');
-  $pdf->Cell(0, 10, "descuento valido para", 0, 1, 'C');
-  $pdf->SetFont('Arial', '', 40);
-  $pdf->Ln(5);
-  $pdf->Cell(0, 15, $cuantos_van, 0, 1, 'C');
-  $pdf->Ln(5);
-  $pdf->SetFont('Arial', '', 20);
-  $pdf->Cell(0, 10, "personas", 0, 1, 'C');
-  $pdf->Ln(5);
-  $pdf->Cell(0, 10, "En la fecha $fecha_asistencia", 0, 1, 'C');
-  $pdf->Ln(5);
-  $pdf->Cell(0, 10, "Descuento del 15% valido unicamente", 0, 1, 'C');
-  $pdf->Cell(0, 10, "para la fecha consignada en este voucher,", 0, 1, 'C');
-  $pdf->Cell(0, 10, "por pago de contado efectivo presentando", 0, 1, 'C');
-  $pdf->Cell(0, 10, "el mismo en puerta.", 0, 1, 'C');
-  $pdf->Ln(5);
+  if ($convenio == 'SuperTourUPD') {
+    $pdf = new PDF();
+    $pdf->AddPage();
+    $pdf->SetFont('Arial', 'B', 30);
+    $pdf->Ln(60);
+    $pdf->Cell(0, 10, 'Pase gratuito de estudiante para', 0, 1, 'C');
+    $pdf->Cell(0, 10, $nombre, 0, 1, 'C');
+    $pdf->Ln(10);
+    $pdf->SetFont('Arial', '', 20);
+    $pdf->Cell(0, 10, "E incluye un", 0, 1, 'C');
+    $pdf->Cell(0, 10, "descuento del 15% valido para", 0, 1, 'C');
+    $pdf->SetFont('Arial', '', 40);
+    $pdf->Ln(5);
+    $pdf->Cell(0, 15, $cuantos_van, 0, 1, 'C');
+    $pdf->Ln(5);
+    $pdf->SetFont('Arial', '', 20);
+    $pdf->Cell(0, 10, "personas", 0, 1, 'C');
+    $pdf->Ln(5);
+    $pdf->Cell(0, 10, "En la fecha $fecha_asistencia", 0, 1, 'C');
+    $pdf->Ln(5);
+    $pdf->Cell(0, 10, "El descuento del 15% es valido unicamente", 0, 1, 'C');
+    $pdf->Cell(0, 10, "para la fecha consignada en este voucher,", 0, 1, 'C');
+    $pdf->Cell(0, 10, "por pago de contado efectivo presentando", 0, 1, 'C');
+    $pdf->Cell(0, 10, "el mismo en puerta.", 0, 1, 'C');
+    $pdf->Ln(5);
+  } else {
+    // Generar PDF
+    $pdf = new PDF();
+    $pdf->AddPage();
+    $pdf->SetFont('Arial', 'B', 30);
+    $pdf->Ln(60);
+    $pdf->Cell(0, 10, 'Gracias por venir', 0, 1, 'C');
+    $pdf->Cell(0, 10, $nombre, 0, 1, 'C');
+    $pdf->Ln(10);
+    $pdf->SetFont('Arial', '', 20);
+    $pdf->Cell(0, 10, "Te otorgamos un", 0, 1, 'C');
+    $pdf->Cell(0, 10, "descuento valido para", 0, 1, 'C');
+    $pdf->SetFont('Arial', '', 40);
+    $pdf->Ln(5);
+    $pdf->Cell(0, 15, $cuantos_van, 0, 1, 'C');
+    $pdf->Ln(5);
+    $pdf->SetFont('Arial', '', 20);
+    $pdf->Cell(0, 10, "personas", 0, 1, 'C');
+    $pdf->Ln(5);
+    $pdf->Cell(0, 10, "En la fecha $fecha_asistencia", 0, 1, 'C');
+    $pdf->Ln(5);
+    $pdf->Cell(0, 10, "Descuento del 15% valido unicamente", 0, 1, 'C');
+    $pdf->Cell(0, 10, "para la fecha consignada en este voucher,", 0, 1, 'C');
+    $pdf->Cell(0, 10, "por pago de contado efectivo presentando", 0, 1, 'C');
+    $pdf->Cell(0, 10, "el mismo en puerta.", 0, 1, 'C');
+    $pdf->Ln(5);
+  }
+
 
   switch ($convenio) {
     case 'Cosquin':
@@ -239,7 +270,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
       body {
-        background-image: url('follaje_infinito_01_lr.jpg');
+        background-image: url('follaje_infinito_02_lr.jpg');
         background-size: 512px 512px;
         background-repeat: repeat;
         background-color: rgba(255, 255, 255, 0);
@@ -272,7 +303,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         background-color: #0056b3;
       }
 
-      h1 {
+      h1,
+      h2,
+      h3 {
         text-align: center;
         color: #333;
         /* Color del texto del título */
@@ -284,8 +317,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <body>
     <div>
       <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-        <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
-          <h1>Obtene tu descuento</h1>
+        <div class="card shadow p-4" style="width: 100%; max-width: 500px; margin:25px;">
+          <div style="width: 100%; max-width: 450px; align-items-center; text-align: center;"><img src="sentidos_300x300.png" style="width: 100%; max-width:100px;"></div>
+          <h1>Obten&eacute; tu descuento</h1>
+          <h3>Te esperamos en Sentidos Ecoparque</h3>
           <form action="" method="post">
             <input type="hidden" name="convenio" value="<?php echo $convenio; ?>">
 
