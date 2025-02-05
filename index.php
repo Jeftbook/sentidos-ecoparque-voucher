@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdf = new PDF();
     $pdf->AddPage();
     $pdf->SetFont('Arial', 'B', 30);
-    $pdf->Ln(60);
+    $pdf->Ln(50);
     $pdf->Cell(0, 15, 'Super Tour', 0, 1, 'C');
     $pdf->Cell(0, 15, 'UPD Egresados', 0, 1, 'C');
     $pdf->Cell(0, 15, '2025', 0, 1, 'C');
@@ -138,13 +138,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdf->SetFont('Arial', 'B', 24);
     $pdf->Cell(0, 10, 'Pase gratuito de estudiante para', 0, 1, 'C');
     $pdf->Cell(0, 10, $nombre, 0, 1, 'C');
-    $pdf->Ln(10);
+    $pdf->Ln(9);
     $pdf->SetFont('Arial', '', 20);
     $pdf->Cell(0, 10, "E incluye un", 0, 1, 'C');
     $pdf->Cell(0, 10, "descuento del 15% valido para", 0, 1, 'C');
     $pdf->SetFont('Arial', '', 40);
     $pdf->Ln(5);
-    $pdf->Cell(0, 15, $cuantos_van, 0, 1, 'C');
+    $pdf->Cell(0, 13, $cuantos_van, 0, 1, 'C');
     $pdf->Ln(5);
     $pdf->SetFont('Arial', '', 20);
     $pdf->Cell(0, 10, "personas", 0, 1, 'C');
@@ -253,6 +253,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     case 'FARMACIA':
       $pdf->Cell(0, 10, "Descuento otorgado a", 0, 1, 'C');
       $pdf->Cell(0, 10, "$convenio", 0, 1, 'C');
+      break;
+    case 'SuperTourUPD':
       break;
     default:
       $pdf->Cell(0, 10, "Descuento promocional", 0, 1, 'C');
