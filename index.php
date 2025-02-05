@@ -131,9 +131,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdf->AddPage();
     $pdf->SetFont('Arial', 'B', 30);
     $pdf->Ln(60);
-    $pdf->Cell(0, 10, 'Super Tour', 0, 1, 'C');
-    $pdf->Cell(0, 10, 'UPD Egresados', 0, 1, 'C');
-    $pdf->Cell(0, 10, '2025', 0, 1, 'C');
+    $pdf->Cell(0, 15, 'Super Tour', 0, 1, 'C');
+    $pdf->Cell(0, 15, 'UPD Egresados', 0, 1, 'C');
+    $pdf->Cell(0, 15, '2025', 0, 1, 'C');
     $pdf->Ln(10);
     $pdf->SetFont('Arial', 'B', 24);
     $pdf->Cell(0, 10, 'Pase gratuito de estudiante para', 0, 1, 'C');
